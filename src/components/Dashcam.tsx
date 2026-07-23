@@ -32,7 +32,7 @@ export default function Dashcam() {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-16 mb-20">
           <div className="lg:w-1/2">
             <h2 className="text-brand-blue font-semibold tracking-wide uppercase text-sm mb-2">Matrix Vision</h2>
             <h3 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
@@ -56,19 +56,28 @@ export default function Dashcam() {
             </Link>
           </div>
           
-          <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
-                <div className="mb-4 bg-brand-navy-light w-16 h-16 rounded-full flex items-center justify-center">
-                  {feature.icon}
-                </div>
-                <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
-                <p className="text-gray-400">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+          <div className="lg:w-1/2 w-full relative">
+            <div className="absolute -inset-4 bg-brand-orange/20 blur-2xl rounded-full"></div>
+            <img 
+              src="/dashcam.png" 
+              alt="Matrix Vision Powerfleet Dashcam" 
+              className="relative w-full h-auto drop-shadow-2xl rounded-2xl border border-white/10" 
+            />
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors">
+              <div className="mb-4 bg-brand-navy-light w-16 h-16 rounded-full flex items-center justify-center">
+                {feature.icon}
+              </div>
+              <h4 className="text-xl font-bold mb-2">{feature.title}</h4>
+              <p className="text-gray-400">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
