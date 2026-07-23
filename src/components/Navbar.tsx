@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
-              <img src="/logo.png" alt="JMW Intelligent Solutions" className="h-8 w-auto" />
+              <img src="/logo.svg" alt="JMW Intelligent Solutions" className="h-10 w-auto" />
             </Link>
           </div>
           

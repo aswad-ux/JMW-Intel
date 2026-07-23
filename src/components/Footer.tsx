@@ -8,8 +8,7 @@ export default function Footer() {
           
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="inline-block mb-6 bg-white p-2 rounded">
-              {/* Note: User logo will be placed here */}
-              <img src="/logo.png" alt="JMW Intelligent Solutions" className="h-12 w-auto" />
+              <img src="/logo.svg" alt="JMW Intelligent Solutions" className="h-12 w-auto" />
             </Link>
             <p className="text-gray-400 mb-6 max-w-xs">
               Professional, insurance-approved vehicle tracking and dashcam installations across South Africa.
