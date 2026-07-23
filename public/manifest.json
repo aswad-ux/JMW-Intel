@@ -1,0 +1,16 @@
+{
+  "name": "JMW Intelligent Solutions",
+  "short_name": "JMW Intel",
+  "description": "Professional vehicle tracking and dashcam installations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a192f",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
