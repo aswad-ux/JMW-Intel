@@ -6,9 +6,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-brand-navy">JMW</span>
-              <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest hidden sm:block">Intelligent Solutions</span>
+            <Link href="/" className="flex items-center">
+              <img src="/logo.png" alt="JMW Intelligent Solutions" className="h-8 w-auto" />
             </Link>
           </div>
           
