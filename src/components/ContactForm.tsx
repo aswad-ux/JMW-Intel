@@ -44,7 +44,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email Us</p>
-                    <p className="font-semibold text-lg">info@jmwintel.com</p>
+                    <p className="font-semibold text-lg">admin@jmwintel.com</p>
                   </div>
                 </div>
                 
