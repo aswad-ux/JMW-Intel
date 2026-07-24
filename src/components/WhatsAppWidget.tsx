@@ -17,9 +17,7 @@ export default function WhatsAppWidget() {
   if (!isVisible) return null;
 
   // Replace with actual business WhatsApp number (include country code, e.g., 27 for SA)
-  const phoneNumber = '27105009626'; 
-  const defaultMessage = 'Hi! I would like to get a quote for a vehicle tracking system.';
-  const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+  const waUrl = 'https://wa.me/c/27833508356';
 
   return (
     <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-10 fade-in duration-500">
