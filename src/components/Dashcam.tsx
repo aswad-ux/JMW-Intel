@@ -59,7 +59,7 @@ export default function Dashcam() {
           <div className="lg:w-1/2 w-full relative">
             <div className="absolute -inset-4 bg-brand-orange/20 blur-2xl rounded-full"></div>
             <img 
-              src="/dashcam.png" 
+              src="/dashcam.svg" 
               alt="Matrix Vision Powerfleet Dashcam" 
               className="relative w-full h-auto drop-shadow-2xl rounded-2xl border border-white/10" 
             />

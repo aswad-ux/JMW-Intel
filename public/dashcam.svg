@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top Hinge Mechanism -->
+  <!-- Base block of hinge -->
+  <rect x="150" y="50" width="550" height="100" rx="15" fill="#15171a" />
+  <!-- Indents in hinge -->
+  <rect x="200" y="120" width="120" height="40" rx="8" fill="#0a0a0c" />
+  <rect x="360" y="120" width="120" height="40" rx="8" fill="#0a0a0c" />
+  <rect x="520" y="120" width="120" height="40" rx="8" fill="#0a0a0c" />
+  
+  <!-- Left Side Knob -->
+  <rect x="80" y="110" width="70" height="60" rx="5" fill="#1c1e21" />
+  <!-- Knob Ribs -->
+  <line x1="90" y1="110" x2="90" y2="170" stroke="#111214" stroke-width="4" />
+  <line x1="105" y1="110" x2="105" y2="170" stroke="#111214" stroke-width="4" />
+  <line x1="120" y1="110" x2="120" y2="170" stroke="#111214" stroke-width="4" />
+  <line x1="135" y1="110" x2="135" y2="170" stroke="#111214" stroke-width="4" />
+
+  <!-- Main Dashcam Body -->
+  <rect x="130" y="150" width="610" height="380" rx="40" fill="#111214" stroke="#2a2d33" stroke-width="2"/>
+  <rect x="140" y="160" width="590" height="360" rx="30" fill="#1c1e21" />
+  
+  <!-- Center Text / Branding Area -->
+  <rect x="230" y="240" width="340" height="180" rx="20" fill="#25272b" />
+  <rect x="235" y="245" width="330" height="170" rx="15" fill="#1f2125" />
+  <!-- Powerfleet Text (Faded) -->
+  <text x="400" y="340" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="900" font-size="28" fill="#2a2d33" text-anchor="middle" letter-spacing="4">POWERFLEET</text>
+
+  <!-- Lens Module on Right -->
+  <rect x="520" y="225" width="180" height="180" rx="30" fill="#0a0a0c" />
+  <rect x="530" y="235" width="160" height="160" rx="20" fill="#181a1d" />
+
+  <!-- Lens Outer Ring -->
+  <circle cx="610" cy="315" r="45" fill="#050505" stroke="#2a2d33" stroke-width="3"/>
+  <circle cx="610" cy="315" r="32" fill="#000000" />
+  
+  <!-- Lens Glass / Reflection -->
+  <circle cx="610" cy="315" r="24" fill="#0a0a0c" />
+  <!-- Large crisp white crescent reflection on the lens -->
+  <path d="M 610 295 A 20 20 0 0 1 625 330 A 18 18 0 0 0 600 300 Z" fill="#ffffff" opacity="0.9" />
+
+  <!-- Lens Technical Text -->
+  <text x="610" y="260" font-family="'Inter', 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#666" text-anchor="middle" letter-spacing="1">WIDE ANGLE</text>
+  <text x="610" y="380" font-family="'Inter', 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#666" text-anchor="middle" letter-spacing="1">FHD 1080P</text>
+  <text x="555" y="315" font-family="'Inter', 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#666" text-anchor="middle" transform="rotate(-90 555 315)" letter-spacing="1">NIGHT VISION</text>
+  <text x="665" y="315" font-family="'Inter', 'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#666" text-anchor="middle" transform="rotate(90 665 315)" letter-spacing="1">GLASS LENS</text>
+</svg>
