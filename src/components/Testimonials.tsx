@@ -29,7 +29,7 @@ export default function Testimonials() {
           <h2 className="text-brand-blue font-semibold tracking-wide uppercase text-sm mb-2">Testimonials</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">Trusted by South Africans</h3>
           <p className="text-gray-600 text-lg">
-            Don't just take our word for it. Here's what our clients have to say about their experience with JMW Intelligent Solutions.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about their experience with JMW Intelligent Solutions.
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-gray-600 italic mb-8 relative z-10">
-                "{t.quote}"
+                &quot;{t.quote}&quot;
               </p>
               <div className="flex items-center gap-4 mt-auto">
                 <div className="w-12 h-12 bg-brand-navy rounded-full flex items-center justify-center text-white font-bold text-xl">

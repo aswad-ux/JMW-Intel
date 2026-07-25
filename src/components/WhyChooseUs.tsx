@@ -31,7 +31,7 @@ export default function WhyChooseUs() {
           <h2 className="text-brand-blue font-semibold tracking-wide uppercase text-sm mb-2">Why Choose JMW</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">The Trusted Experts in Vehicle Security</h3>
           <p className="text-gray-600 text-lg">
-            We don't just sell tracking units. We provide a complete security ecosystem with expert local installation and dedicated support.
+            We don&apos;t just sell tracking units. We provide a complete security ecosystem with expert local installation and dedicated support.
           </p>
         </div>
 

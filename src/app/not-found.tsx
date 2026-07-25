@@ -13,7 +13,7 @@ export default function NotFound() {
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Looks like you took a wrong turn!</h2>
         
         <p className="text-gray-600 mb-10 text-lg">
-          The page you are looking for has been moved or no longer exists. Let's get you back on track.
+          The page you are looking for has been moved or no longer exists. Let&apos;s get you back on track.
         </p>
         
         <Link 

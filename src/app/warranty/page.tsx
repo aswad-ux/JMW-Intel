@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { ShieldCheck, PenTool } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 
 export const metadata = {
   title: 'Warranty Information | JMW Intelligent Solutions',

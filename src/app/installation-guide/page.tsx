@@ -41,7 +41,7 @@ export default function InstallationGuide() {
           
           <div className="p-10 md:p-16">
             <p className="text-gray-600 mb-10 text-lg leading-relaxed">
-              At JMW Intelligent Solutions, we understand that your time is valuable. That's why we bring our fitment center to you. Our mobile installation service ensures that securing your vehicle is entirely hassle-free.
+              At JMW Intelligent Solutions, we understand that your time is valuable. That&apos;s why we bring our fitment center to you. Our mobile installation service ensures that securing your vehicle is entirely hassle-free.
             </p>
             
             <div className="space-y-8">

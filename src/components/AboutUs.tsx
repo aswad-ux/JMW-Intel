@@ -1,5 +1,5 @@
 import { ShieldCheck, Map, Users, Clock } from 'lucide-react';
-import Image from 'next/image';
+
 
 export default function AboutUs() {
   return (
@@ -43,7 +43,7 @@ export default function AboutUs() {
               Your Trusted Partner in <span className="text-brand-orange">Vehicle Security</span>
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Based in South Africa, JMW Intelligent Solutions was founded with a single mission: to provide uncompromising vehicle security and fleet management tools that actually work when you need them most. We don't just sell trackers; we provide peace of mind.
+              Based in South Africa, JMW Intelligent Solutions was founded with a single mission: to provide uncompromising vehicle security and fleet management tools that actually work when you need them most. We don&apos;t just sell trackers; we provide peace of mind.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8">

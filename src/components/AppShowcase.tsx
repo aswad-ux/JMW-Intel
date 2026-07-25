@@ -26,7 +26,7 @@ export default function AppShowcase() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-brand-navy mb-2">Live Pinpoint Tracking</h3>
-                  <p className="text-gray-600">See your vehicle's exact location in real-time, updated every few seconds on a high-definition street map.</p>
+                  <p className="text-gray-600">See your vehicle&apos;s exact location in real-time, updated every few seconds on a high-definition street map.</p>
                 </div>
               </div>
 

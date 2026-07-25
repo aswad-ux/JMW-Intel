@@ -40,7 +40,7 @@ export default function Dashcam() {
             </h3>
             <blockquote className="border-l-4 border-brand-orange pl-6 mb-10">
               <p className="text-xl md:text-2xl text-gray-300 font-light italic leading-relaxed">
-                "In the heat of an accident, memory fails. Don't let it be your word against theirs."
+                &quot;In the heat of an accident, memory fails. Don&apos;t let it be your word against theirs.&quot;
               </p>
             </blockquote>
             
