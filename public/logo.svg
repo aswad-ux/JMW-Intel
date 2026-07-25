@@ -1,75 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 10 478 154" width="478" height="154" preserveAspectRatio="xMidYMid meet">
 
-  <!-- ============================================ -->
-  <!-- MAP PIN: C-shaped, open on upper-left        -->
-  <!-- ============================================ -->
-  <!-- Full teardrop pin path, then cut out the top-left arc portion -->
-  <g>
-    <!-- The main pin body: a teardrop that points downward -->
-    <!-- Center of circle: cx=90, cy=72. Radius=58 -->
-    <!-- Pin tip at bottom: 90,158 -->
-    <path
-      d="M 32 72
-         A 58 58 0 1 1 148 72
-         C 148 108, 115 130, 90 158
-         C 65 130, 32 108, 32 72
-         Z"
-      fill="#1a1a1a"
-    />
+  <!-- ======================== -->
+  <!-- MAP PIN (teardrop)        -->
+  <!-- cx=80, cy=66, r=52       -->
+  <!-- tip at y=146             -->
+  <!-- ======================== -->
+  <path
+    d="M 28 66
+       A 52 52 0 1 1 132 66
+       C 132 98, 104 120, 80 146
+       C 56 120, 28 98, 28 66
+       Z"
+    fill="#1a1a1a"
+  />
 
-    <!-- White circle cutout inside pin -->
-    <circle cx="90" cy="72" r="40" fill="white" />
+  <!-- White inner circle -->
+  <circle cx="80" cy="66" r="36" fill="white" />
 
-    <!-- Horizontal bar extending to the right from top of circle -->
-    <!-- In the reference: bar goes RIGHT from approx x=148 (right edge of circle) -->
-    <rect x="148" y="28" width="340" height="9" fill="#1a1a1a" rx="1"/>
+  <!-- Bar from right-edge of pin to right edge of text -->
+  <rect x="132" y="25" width="372" height="8" fill="#1a1a1a" rx="1"/>
 
-    <!-- ============================================ -->
-    <!-- WIFI / SIGNAL ICON centered in white circle  -->
-    <!-- Center: 90, 72                               -->
-    <!-- ============================================ -->
+  <!-- ======================== -->
+  <!-- SIGNAL / ANTENNA ICON    -->
+  <!-- anchored at cx=80, cy=53 -->
+  <!-- ======================== -->
+  <circle cx="80" cy="53" r="4.5" fill="#1a1a1a" />
+  <rect x="78" y="53" width="4" height="22" fill="#1a1a1a" />
+  <rect x="73" y="75" width="14" height="5.5" rx="1.5" fill="#1a1a1a" />
 
-    <!-- Center dot -->
-    <circle cx="90" cy="58" r="5" fill="#1a1a1a" />
+  <!-- Left arcs -->
+  <path d="M 69 42 A 13 13 0 0 0 69 64" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M 61 34 A 21 21 0 0 0 61 72" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round"/>
 
-    <!-- Antenna stem: vertical line down from dot -->
-    <rect x="88" y="58" width="4" height="26" fill="#1a1a1a" />
+  <!-- Right arcs -->
+  <path d="M 91 42 A 13 13 0 0 1 91 64" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M 99 34 A 21 21 0 0 1 99 72" fill="none" stroke="#1a1a1a" stroke-width="3.2" stroke-linecap="round"/>
 
-    <!-- Antenna base bar -->
-    <rect x="83" y="84" width="14" height="6" rx="1.5" fill="#1a1a1a" />
-
-    <!-- Left signal arcs, centered on the dot at 90,58 -->
-    <path d="M 78 46 A 14 14 0 0 0 78 70" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M 70 38 A 23 23 0 0 0 70 78" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-
-    <!-- Right signal arcs -->
-    <path d="M 102 46 A 14 14 0 0 1 102 70" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-    <path d="M 110 38 A 23 23 0 0 1 110 78" fill="none" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
-
-  </g>
-
-  <!-- ============================================ -->
-  <!-- TEXT: JMW INTELLIGENT / SOLUTIONS            -->
-  <!-- Right-aligned under INTELLIGENT              -->
-  <!-- ============================================ -->
+  <!-- ======================== -->
+  <!-- TEXT                     -->
+  <!-- ======================== -->
   <text
-    x="168"
-    y="76"
+    x="150"
+    y="68"
     font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
     font-weight="900"
-    font-size="38"
+    font-size="34"
     fill="#1a1a1a"
     letter-spacing="-0.5"
   >JMW INTELLIGENT</text>
 
   <text
-    x="498"
-    y="110"
+    x="504"
+    y="100"
     font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
     font-weight="900"
-    font-size="26"
+    font-size="23"
     fill="#1a1a1a"
-    letter-spacing="2.5"
+    letter-spacing="2"
     text-anchor="end"
   >SOLUTIONS</text>
 
