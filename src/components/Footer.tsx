@@ -42,6 +42,7 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-400">
               <li><Link href="#tracking" className="hover:text-brand-orange transition-colors">Tracking Solutions</Link></li>
               <li><Link href="#dashcams" className="hover:text-brand-orange transition-colors">Matrix Vision Dashcams</Link></li>
+              <li><Link href="/fleet" className="hover:text-brand-orange transition-colors">Fleet Management</Link></li>
               <li><Link href="#pricing" className="hover:text-brand-orange transition-colors">Pricing Plans</Link></li>
               <li><Link href="#why-us" className="hover:text-brand-orange transition-colors">Why Choose Us</Link></li>
             </ul>

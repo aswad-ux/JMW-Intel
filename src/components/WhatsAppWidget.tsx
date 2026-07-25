@@ -20,7 +20,12 @@ export default function WhatsAppWidget() {
   const waUrl = 'https://wa.me/c/27833508356';
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-10 fade-in duration-500">
+    <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-10 fade-in duration-500 flex flex-col items-end gap-2">
+      {/* Reply time badge */}
+      <div className="bg-white text-brand-navy text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg border border-gray-100 flex items-center gap-1.5">
+        <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+        Typically replies in &lt; 15 min
+      </div>
       <a 
         href={waUrl}
         target="_blank"

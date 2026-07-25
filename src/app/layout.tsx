@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import CookieBanner from "@/components/CookieBanner";
+import StickyCtaBanner from "@/components/StickyCtaBanner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +56,8 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppWidget />
+        <CookieBanner />
+        <StickyCtaBanner />
       </body>
     </html>
   );

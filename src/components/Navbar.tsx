@@ -14,6 +14,7 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-8 items-center">
             <Link href="#tracking" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Tracking Solutions</Link>
             <Link href="#dashcams" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Dashcams</Link>
+            <Link href="/fleet" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Fleet</Link>
             <Link href="#pricing" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Pricing</Link>
             <Link href="#contact" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Contact</Link>
             <Link 
