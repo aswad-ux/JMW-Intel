@@ -77,7 +77,28 @@ export default function AppShowcase() {
 
                 {/* Map Interface Simulation */}
                 <div className="flex-1 bg-gray-100 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('https://api.maptiler.com/maps/streets-v2/256/0/0/0.png')] bg-cover opacity-60 mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-[#e9ecef]">
+                    <svg className="w-full h-full opacity-70" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                      {/* Parks */}
+                      <path d="M20,60 L40,60 L40,140 L20,140 Z" fill="#d1e8d5" />
+                      <path d="M220,20 L280,20 L280,80 L220,80 Z" fill="#d1e8d5" />
+                      <path d="M120,400 L180,400 L180,550 L120,550 Z" fill="#d1e8d5" />
+                      <path d="M260,350 L330,350 L330,420 L260,420 Z" fill="#d1e8d5" />
+                      
+                      {/* Water */}
+                      <path d="M-20,350 Q 50,400 120,380 T 250,450 T 420,400" stroke="#a5c8fd" strokeWidth="12" fill="none" />
+
+                      {/* Main Roads */}
+                      <path d="M0,50 L100,50 L150,100 L400,100" stroke="#ffffff" strokeWidth="8" fill="none" />
+                      <path d="M50,0 L50,150 L100,200 L100,600" stroke="#ffffff" strokeWidth="10" fill="none" />
+                      <path d="M200,0 L180,100 L220,250 L200,400 L250,600" stroke="#ffffff" strokeWidth="7" fill="none" />
+                      <path d="M0,300 L150,280 L200,320 L400,300" stroke="#ffffff" strokeWidth="9" fill="none" />
+                      <path d="M150,280 L150,600" stroke="#ffffff" strokeWidth="8" fill="none" />
+                      <path d="M0,450 L100,450 L150,500 L400,450" stroke="#ffffff" strokeWidth="6" fill="none" />
+                      <path d="M300,0 L300,200 L350,250 L350,600" stroke="#ffffff" strokeWidth="8" fill="none" />
+                      <path d="M220,250 L300,200" stroke="#ffffff" strokeWidth="6" fill="none" />
+                    </svg>
+                  </div>
                   
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[20%] w-full flex flex-col items-center">
                     
