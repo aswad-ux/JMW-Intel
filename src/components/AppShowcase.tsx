@@ -30,15 +30,7 @@ export default function AppShowcase() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-brand-blue">
-                  <PowerOff className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-brand-navy mb-2">Remote Immobilization</h3>
-                  <p className="text-gray-600">In the event of a theft, securely cut your engine power directly from the app (available on Silver & Gold).</p>
-                </div>
-              </div>
+
 
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-brand-blue">
