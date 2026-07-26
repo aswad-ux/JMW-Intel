@@ -56,3 +56,11 @@ select {
   color: #0f172a !important;
   -webkit-text-fill-color: #0f172a !important;
 }
+
+/* Restore placeholder transparency for floating-label inputs
+   (where the label itself acts as the visual placeholder) */
+.placeholder-transparent::placeholder {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  opacity: 0 !important;
+}
