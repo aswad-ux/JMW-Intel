@@ -45,6 +45,14 @@ textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 textarea:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #f8fafc inset !important;
-    -webkit-text-fill-color: var(--foreground) !important;
+    -webkit-text-fill-color: #0f172a !important;
     transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Force all inputs to always show dark text — site is light-themed */
+input,
+textarea,
+select {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
 }
