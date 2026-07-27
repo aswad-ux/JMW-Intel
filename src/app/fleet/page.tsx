@@ -42,32 +42,71 @@ const features = [
 
 const plans = [
   {
-    name: 'Starter Fleet',
-    vehicles: '2–10 vehicles',
-    price: 'From R199',
-    period: '/vehicle/month',
-    features: ['Live GPS Tracking', 'MXV Smartphone App', 'Trip History & Reports', 'Email & SMS Alerts', 'SARS Logbook Export'],
-    cta: 'Get Fleet Quote',
+    name: 'Matrix Bike (MXV Bike)',
+    target: 'Motorcycles & Bikes',
+    price: 'R189',
+    period: 'incl VAT / month',
+    features: [
+      {
+        category: 'Core Tracking',
+        items: ['Matrix wired hardware installation', 'Beame recovery service', 'GPS pinpoint positioning', 'Trips and reports']
+      },
+      {
+        category: 'Alerts & Security',
+        items: ['Power down alert', 'Border alert', 'GeoLoc advanced alert', 'Auto testing and confidence checks']
+      },
+      {
+        category: 'Support & Compliance',
+        items: ['24/7 National Operations Centre', 'National network coverage', 'Smartphone app', 'Insurance approved']
+      }
+    ],
+    cta: 'Get Quote',
     highlight: false,
   },
   {
-    name: 'Business Fleet',
-    vehicles: '11–50 vehicles',
-    price: 'From R169',
-    period: '/vehicle/month',
-    features: ['Everything in Starter', 'Driver Behaviour Scoring', 'Fuel Usage Reports', 'Geofence Zone Alerts', 'Dedicated Account Manager', 'Priority Support'],
-    cta: 'Get Fleet Quote',
+    name: 'Matrix Commercial',
+    target: 'Businesses & Vehicle Operations',
+    price: 'Custom',
+    period: 'Pricing',
+    features: [
+      {
+        category: 'Core Tracking',
+        items: ['GPS pinpoint positioning', 'Stolen vehicle recovery', 'Tax logbook', 'Detailed reports']
+      },
+      {
+        category: 'Alerts & Security',
+        items: ['Panic alert with remote', 'Power down alert', 'Border alert', 'GeoLoc advanced alert']
+      },
+      {
+        category: 'Support & Compliance',
+        items: ['Smartphone app', '24/7 National Operations Centre', 'National network coverage', 'Auto testing', 'Insurance approved']
+      }
+    ],
+    cta: 'Get Quote',
     highlight: true,
   },
   {
-    name: 'Enterprise',
-    vehicles: '50+ vehicles',
-    price: 'Custom',
-    period: 'pricing',
-    features: ['Everything in Business', 'API Integration', 'White-Label Dashboard', 'Custom Reporting', 'On-Site Installation', 'SLA Agreement'],
-    cta: 'Contact Sales',
+    name: 'Matrix Plant (MXV Plant)',
+    target: 'Small Business Asset Tracking',
+    price: 'R189',
+    period: 'incl VAT / month',
+    features: [
+      {
+        category: 'Core Tracking',
+        items: ['Matrix wired hardware installation', 'Beame recovery service', 'GPS pinpoint positioning', 'Stolen vehicle recovery', 'Trip monitoring']
+      },
+      {
+        category: 'Alerts & Security',
+        items: ['Power down alerts', 'Border alerts', 'GeoLoc advanced alerts', 'Incident & alert reports']
+      },
+      {
+        category: 'Support & Compliance',
+        items: ['Auto testing and confidence checks', 'Smartphone app', 'National network coverage', '24/7 National Operations Centre', 'Insurance approved']
+      }
+    ],
+    cta: 'Get Quote',
     highlight: false,
-  },
+  }
 ];
 
 export default function FleetPage() {
@@ -177,19 +216,26 @@ export default function FleetPage() {
                   </div>
                 )}
                 <h3 className={`text-2xl font-bold mb-1 ${plan.highlight ? 'text-white' : 'text-brand-navy'}`}>{plan.name}</h3>
-                <p className={`text-sm mb-5 ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>{plan.vehicles}</p>
+                <p className={`text-sm mb-5 ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>{plan.target}</p>
                 <div className="mb-6">
                   <span className={`text-4xl font-extrabold ${plan.highlight ? 'text-white' : 'text-brand-navy'}`}>{plan.price}</span>
                   <span className={`text-sm ml-1 ${plan.highlight ? 'text-blue-200' : 'text-gray-400'}`}>{plan.period}</span>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((f, fi) => (
-                    <li key={fi} className="flex items-center gap-3">
-                      <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${plan.highlight ? 'text-brand-orange' : 'text-green-500'}`} />
-                      <span className={`text-sm ${plan.highlight ? 'text-blue-100' : 'text-gray-600'}`}>{f}</span>
-                    </li>
+                <div className="space-y-6 mb-8 text-left">
+                  {plan.features.map((group, fi) => (
+                    <div key={fi}>
+                      <h4 className={`text-sm font-bold mb-3 uppercase tracking-wider ${plan.highlight ? 'text-brand-orange' : 'text-brand-navy'}`}>{group.category}</h4>
+                      <ul className="space-y-3">
+                        {group.items.map((item, ii) => (
+                          <li key={ii} className="flex items-start gap-3">
+                            <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlight ? 'text-brand-orange' : 'text-green-500'}`} />
+                            <span className={`text-sm ${plan.highlight ? 'text-blue-100' : 'text-gray-600'}`}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
                 <Link
                   href="#fleet-contact"
                   className={`block text-center font-bold py-3.5 rounded-xl transition-all ${
