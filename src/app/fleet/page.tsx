@@ -66,8 +66,8 @@ const plans = [
   {
     name: 'Matrix Commercial',
     target: 'Businesses & Vehicle Operations',
-    price: 'Custom',
-    period: 'Pricing',
+    price: 'R199',
+    period: 'incl VAT / month',
     features: [
       {
         category: 'Core Tracking',
