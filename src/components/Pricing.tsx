@@ -7,6 +7,7 @@ export default function Pricing() {
       name: "Beame",
       price: "99",
       description: "Essential stolen vehicle recovery",
+      planParam: "beame",
       features: [
         "Single wireless unit",
         "Stolen vehicle recovery",
@@ -19,6 +20,7 @@ export default function Pricing() {
       name: "MXV Bronze",
       price: "179",
       description: "Live tracking & trip logging",
+      planParam: "mxv-bronze",
       features: [
         "Two devices installed",
         "Live GPS tracking",
@@ -32,6 +34,7 @@ export default function Pricing() {
       name: "MXV Silver",
       price: "189",
       description: "Advanced alerts & security",
+      planParam: "mxv-silver",
       features: [
         "Everything in Bronze",
         "Panic button remote",
@@ -44,6 +47,7 @@ export default function Pricing() {
       name: "MXV Gold",
       price: "199",
       description: "Premium B2B & Tax Compliance",
+      planParam: "mxv-gold",
       features: [
         "Everything in Silver",
         "Roadside assistance",
@@ -52,8 +56,8 @@ export default function Pricing() {
         "SARS tax logbook generation",
       ],
       popular: false,
-      highlight: true
-    }
+      highlight: true,
+    },
   ];
 
   return (
@@ -69,8 +73,8 @@ export default function Pricing() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`relative bg-white rounded-2xl p-8 border ${plan.popular ? 'border-brand-orange shadow-xl scale-105 z-10' : 'border-gray-200 shadow-sm'} flex flex-col`}
             >
               {plan.popular && (
@@ -83,17 +87,17 @@ export default function Pricing() {
                   Best for Business
                 </div>
               )}
-              
+
               <div className="mb-6">
                 <h4 className="text-2xl font-bold text-brand-navy mb-2">{plan.name}</h4>
                 <p className="text-gray-500 text-sm h-10">{plan.description}</p>
               </div>
-              
+
               <div className="mb-8">
                 <span className="text-4xl font-extrabold text-brand-navy">R{plan.price}</span>
                 <span className="text-gray-500 font-medium">/mo</span>
               </div>
-              
+
               <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature, fIndex) => (
                   <li key={fIndex} className="flex items-start gap-3">
@@ -104,9 +108,9 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              
-              <Link 
-                href={`#contact`} 
+
+              <Link
+                href={`#contact?plan=${plan.planParam}`}
                 className={`w-full text-center py-3 rounded-lg font-bold transition-colors ${plan.popular ? 'bg-brand-orange hover:bg-brand-orange-hover text-white' : 'bg-gray-100 hover:bg-gray-200 text-brand-navy'}`}
               >
                 Select Plan

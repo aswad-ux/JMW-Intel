@@ -40,6 +40,7 @@ export default function Dashcam() {
       name: "Vision",
       price: "R359",
       period: "/month incl VAT",
+      planParam: "vision",
       features: [
         "Full ADAS and AI driver monitoring",
         "3 months event cloud storage",
@@ -52,6 +53,7 @@ export default function Dashcam() {
       name: "Vision Pro",
       price: "R399",
       period: "/month incl VAT",
+      planParam: "vision-pro",
       features: [
         "Everything in Vision",
         "6 months event cloud storage",
@@ -148,7 +150,7 @@ export default function Dashcam() {
                 ))}
               </ul>
               <Link
-                href="#contact"
+                href={`#contact?plan=${plan.planParam}`}
                 className={`block text-center font-bold py-3 rounded-xl transition-all ${
                   plan.highlight
                     ? 'bg-brand-orange hover:bg-brand-orange-hover text-white shadow-lg'

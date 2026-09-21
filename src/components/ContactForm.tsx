@@ -1,44 +1,87 @@
 'use client';
 
-import { useState } from 'react';
-import { Phone, Mail, MapPin, Send, Car, User, ArrowRight, ArrowLeft, CheckCircle2, Shield, Video, HelpCircle, Navigation } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Phone, Mail, MapPin, Send, Car, User, ArrowRight, ArrowLeft, CheckCircle2, Shield, Video, HelpCircle, Navigation, Tag } from 'lucide-react';
+
+const PRODUCT_LABELS: Record<string, string> = {
+  beame: 'Beame',
+  mxv: 'MXV Packages',
+  'mxv-bronze': 'MXV Bronze',
+  'mxv-silver': 'MXV Silver',
+  'mxv-gold': 'MXV Gold',
+  dashcam: 'Matrix Vision Dashcam',
+  'vision': 'Matrix Vision (R359/mo)',
+  'vision-pro': 'Matrix Vision Pro (R399/mo)',
+  other: 'General Enquiry',
+};
+
+// Map plan param → product tile id
+const PLAN_TO_PRODUCT: Record<string, string> = {
+  beame: 'beame',
+  'mxv-bronze': 'mxv',
+  'mxv-silver': 'mxv',
+  'mxv-gold': 'mxv',
+  vision: 'dashcam',
+  'vision-pro': 'dashcam',
+};
 
 export default function ContactForm() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
-  // Form State
+
   const [formData, setFormData] = useState({
     product: '',
+    plan: '',
     make: '',
     model: '',
     year: '',
     name: '',
     phone: '',
     email: '',
-    message: ''
+    message: '',
   });
+
+  // Read URL params on mount and pre-select product/plan
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const productParam = params.get('product');
+    const planParam = params.get('plan');
+
+    if (productParam || planParam) {
+      const resolvedProduct = planParam
+        ? (PLAN_TO_PRODUCT[planParam] ?? productParam ?? '')
+        : productParam ?? '';
+
+      setFormData(prev => ({
+        ...prev,
+        product: resolvedProduct,
+        plan: planParam ?? productParam ?? '',
+      }));
+      // Skip step 1 since the product is already known
+      setStep(2);
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const selectProduct = (product: string) => {
-    setFormData({ ...formData, product });
+    setFormData({ ...formData, product, plan: product });
     setStep(2);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      const response = await fetch("https://formspree.io/f/xrenywgr", {
-        method: "POST",
+      const response = await fetch('https://formspree.io/f/xrenywgr', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify(formData),
       });
@@ -46,24 +89,34 @@ export default function ContactForm() {
       if (response.ok) {
         setSubmitted(true);
       } else {
-        alert("Oops! There was a problem submitting your form");
+        alert('Oops! There was a problem submitting your form');
       }
     } catch {
-      alert("Oops! There was a problem submitting your form");
+      alert('Oops! There was a problem submitting your form');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const resetForm = () => {
+    setSubmitted(false);
+    setStep(1);
+    setFormData({ product: '', plan: '', make: '', model: '', year: '', name: '', phone: '', email: '', message: '' });
+    // Clear query params from URL
+    window.history.replaceState({}, '', window.location.pathname + '#contact');
+  };
+
+  const selectedLabel = formData.plan ? PRODUCT_LABELS[formData.plan] : formData.product ? PRODUCT_LABELS[formData.product] : null;
 
   const renderStepIndicator = () => (
     <div className="flex items-center justify-between mb-8">
       {[1, 2, 3].map((num) => (
         <div key={num} className="flex flex-col items-center relative z-10 flex-1">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-            step === num 
-              ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/30 scale-110' 
-              : step > num 
-                ? 'bg-brand-navy text-white' 
+            step === num
+              ? 'bg-brand-orange text-white shadow-lg shadow-brand-orange/30 scale-110'
+              : step > num
+                ? 'bg-brand-navy text-white'
                 : 'bg-gray-200 text-gray-400'
           }`}>
             {step > num ? <CheckCircle2 className="w-6 h-6" /> : num}
@@ -74,8 +127,8 @@ export default function ContactForm() {
         </div>
       ))}
       <div className="absolute left-[15%] right-[15%] top-5 h-1 bg-gray-200 -z-0">
-        <div 
-          className="h-full bg-brand-navy transition-all duration-500 ease-in-out" 
+        <div
+          className="h-full bg-brand-navy transition-all duration-500 ease-in-out"
           style={{ width: `${((step - 1) / 2) * 100}%` }}
         />
       </div>
@@ -86,14 +139,25 @@ export default function ContactForm() {
     <section className="py-24 bg-gray-50 relative" id="contact">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
-          
+
           {/* Left Sidebar */}
           <div className="lg:w-2/5 bg-brand-navy p-10 md:p-16 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute -top-24 -right-24 w-96 h-96 bg-brand-orange/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-4">Get in Touch</h3>
               <p className="text-brand-blue mb-10 text-lg">Ready to secure your vehicle? Complete our quick form and our experts will provide a free, accurate quote.</p>
-              
+
+              {/* Pre-selected plan badge */}
+              {selectedLabel && (
+                <div className="mb-8 flex items-center gap-3 bg-brand-orange/20 border border-brand-orange/40 rounded-xl px-4 py-3">
+                  <Tag className="w-5 h-5 text-brand-orange flex-shrink-0" />
+                  <div>
+                    <p className="text-xs text-brand-orange font-bold uppercase tracking-wider">Selected Plan</p>
+                    <p className="text-white font-semibold text-sm">{selectedLabel}</p>
+                  </div>
+                </div>
+              )}
+
               <div className="space-y-6">
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-orange/20 transition-colors">
@@ -104,7 +168,7 @@ export default function ContactForm() {
                     <p className="font-semibold text-lg">010 500 9626</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-orange/20 transition-colors">
                     <Mail className="w-5 h-5 text-brand-orange" />
@@ -114,7 +178,7 @@ export default function ContactForm() {
                     <p className="font-semibold text-lg">admin@jmwintel.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-orange/20 transition-colors">
                     <MapPin className="w-5 h-5 text-brand-orange" />
@@ -126,13 +190,13 @@ export default function ContactForm() {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-16 pt-8 border-t border-white/10 relative z-10">
               <p className="text-sm text-gray-400">Working Hours</p>
               <p className="font-semibold">Mon - Fri: 08:00 - 17:00</p>
             </div>
           </div>
-          
+
           {/* Right Form Area */}
           <div className="lg:w-3/5 p-10 md:p-16 relative">
             {submitted ? (
@@ -142,8 +206,8 @@ export default function ContactForm() {
                 </div>
                 <h3 className="text-4xl font-bold text-brand-navy">Request Received!</h3>
                 <p className="text-gray-600 text-lg max-w-md">Thank you for choosing JMW Intelligent Solutions. One of our experts will contact you shortly.</p>
-                <button 
-                  onClick={() => { setSubmitted(false); setStep(1); setFormData({product: '', make: '', model: '', year: '', name: '', phone: '', email: '', message: ''}) }}
+                <button
+                  onClick={resetForm}
                   className="mt-8 text-brand-blue font-semibold hover:underline"
                 >
                   Submit another request
@@ -156,7 +220,7 @@ export default function ContactForm() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="flex-grow flex flex-col">
-                  
+
                   {/* Step 1: Product Selection */}
                   {step === 1 && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-300">
@@ -165,17 +229,22 @@ export default function ContactForm() {
                         {[
                           { id: 'beame', title: 'Beame', desc: 'Stolen Vehicle Recovery', icon: Navigation },
                           { id: 'mxv', title: 'MXV Packages', desc: 'Premium Tracking (Bronze/Silver/Gold)', icon: Shield },
-                          { id: 'dashcam', title: 'Dashcam', desc: 'Matrix Vision HD Recording', icon: Video },
+                          { id: 'dashcam', title: 'Dashcam', desc: 'Matrix Vision AI Recording', icon: Video },
                           { id: 'other', title: 'Not Sure', desc: 'I need expert advice', icon: HelpCircle },
                         ].map((item) => (
-                          <div 
+                          <div
                             key={item.id}
                             onClick={() => selectProduct(item.id)}
-                            className={`p-5 rounded-xl border-2 cursor-pointer transition-all duration-200 group ${formData.product === item.id ? 'border-brand-orange bg-brand-orange/5' : 'border-gray-100 bg-gray-50 hover:border-brand-blue/30'}`}
+                            className={`p-5 rounded-xl border-2 cursor-pointer transition-all duration-200 group ${formData.product === item.id ? 'border-brand-orange bg-brand-orange/5 shadow-md' : 'border-gray-100 bg-gray-50 hover:border-brand-blue/30 hover:shadow-sm'}`}
                           >
                             <item.icon className={`w-8 h-8 mb-3 ${formData.product === item.id ? 'text-brand-orange' : 'text-gray-400 group-hover:text-brand-blue'}`} />
                             <h4 className="font-bold text-brand-navy text-lg">{item.title}</h4>
                             <p className="text-sm text-gray-500">{item.desc}</p>
+                            {formData.product === item.id && (
+                              <p className="text-xs text-brand-orange font-semibold mt-2 flex items-center gap-1">
+                                <CheckCircle2 className="w-3 h-3" /> Selected
+                              </p>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -185,15 +254,32 @@ export default function ContactForm() {
                   {/* Step 2: Vehicle Details */}
                   {step === 2 && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-                      <h3 className="text-2xl font-bold text-brand-navy mb-6">Tell us about your vehicle</h3>
-                      <p className="text-gray-500 mb-6 -mt-4">This helps us provide the most accurate installation quote.</p>
-                      
+                      {/* Selected plan reminder */}
+                      {selectedLabel && (
+                        <div className="flex items-center gap-2 bg-brand-orange/10 border border-brand-orange/30 rounded-lg px-4 py-2.5 mb-6">
+                          <Tag className="w-4 h-4 text-brand-orange flex-shrink-0" />
+                          <p className="text-sm font-semibold text-brand-navy">
+                            Enquiring about: <span className="text-brand-orange">{selectedLabel}</span>
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => setStep(1)}
+                            className="ml-auto text-xs text-gray-400 hover:text-brand-navy underline"
+                          >
+                            Change
+                          </button>
+                        </div>
+                      )}
+
+                      <h3 className="text-2xl font-bold text-brand-navy mb-2">Tell us about your vehicle</h3>
+                      <p className="text-gray-500 mb-6">This helps us provide the most accurate installation quote.</p>
+
                       <div className="space-y-5">
                         <div className="relative">
                           <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                          <input 
-                            type="text" 
-                            id="make" 
+                          <input
+                            type="text"
+                            id="make"
                             name="make"
                             value={formData.make}
                             onChange={handleChange}
@@ -202,12 +288,12 @@ export default function ContactForm() {
                           />
                           <label htmlFor="make" className="absolute text-gray-500 duration-300 transform -translate-y-2.5 scale-75 top-4 z-10 origin-[0] left-12 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-2.5 font-semibold">Vehicle Make (e.g. Toyota)</label>
                         </div>
-                        
+
                         <div className="relative">
                           <Shield className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                          <input 
-                            type="text" 
-                            id="model" 
+                          <input
+                            type="text"
+                            id="model"
                             name="model"
                             value={formData.model}
                             onChange={handleChange}
@@ -218,9 +304,9 @@ export default function ContactForm() {
                         </div>
 
                         <div className="relative">
-                          <input 
-                            type="text" 
-                            id="year" 
+                          <input
+                            type="text"
+                            id="year"
                             name="year"
                             value={formData.year}
                             onChange={handleChange}
@@ -246,14 +332,14 @@ export default function ContactForm() {
                   {step === 3 && (
                     <div className="animate-in fade-in slide-in-from-right-4 duration-300 flex flex-col h-full">
                       <h3 className="text-2xl font-bold text-brand-navy mb-6">Your Details</h3>
-                      
+
                       <div className="space-y-4 flex-grow">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="relative">
                             <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                            <input 
-                              type="text" 
-                              id="name" 
+                            <input
+                              type="text"
+                              id="name"
                               name="name"
                               value={formData.name}
                               onChange={handleChange}
@@ -263,12 +349,12 @@ export default function ContactForm() {
                             />
                             <label htmlFor="name" className="absolute text-gray-500 duration-300 transform -translate-y-2.5 scale-75 top-4 z-10 origin-[0] left-12 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-2.5 font-semibold">Full Name *</label>
                           </div>
-                          
+
                           <div className="relative">
                             <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                            <input 
-                              type="tel" 
-                              id="phone" 
+                            <input
+                              type="tel"
+                              id="phone"
                               name="phone"
                               value={formData.phone}
                               onChange={handleChange}
@@ -282,9 +368,9 @@ export default function ContactForm() {
 
                         <div className="relative">
                           <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
-                          <input 
-                            type="email" 
-                            id="email" 
+                          <input
+                            type="email"
+                            id="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
@@ -294,27 +380,27 @@ export default function ContactForm() {
                           />
                           <label htmlFor="email" className="absolute text-gray-500 duration-300 transform -translate-y-2.5 scale-75 top-4 z-10 origin-[0] left-12 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-2.5 font-semibold">Email Address *</label>
                         </div>
-                        
+
                         <div className="relative">
-                          <textarea 
-                            id="message" 
+                          <textarea
+                            id="message"
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            rows={3} 
+                            rows={3}
                             className="peer w-full px-4 pt-6 pb-2 rounded-lg bg-gray-50 border border-gray-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all resize-none placeholder-transparent"
                             placeholder="Message"
                           ></textarea>
                           <label htmlFor="message" className="absolute text-gray-500 duration-300 transform -translate-y-2.5 scale-75 top-4 z-10 origin-[0] left-4 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-2.5 font-semibold">Additional Comments</label>
                         </div>
                       </div>
-                      
+
                       <div className="mt-6 flex gap-4">
                         <button type="button" onClick={() => setStep(2)} className="px-6 py-4 rounded-lg border border-gray-200 text-gray-600 font-bold hover:bg-gray-50 transition-colors flex items-center gap-2">
                           <ArrowLeft className="w-4 h-4" /> Back
                         </button>
-                        <button 
-                          type="submit" 
+                        <button
+                          type="submit"
                           disabled={isSubmitting}
                           className="flex-1 bg-brand-orange hover:bg-brand-orange-hover text-white font-bold text-lg py-4 rounded-lg transition-all shadow-md hover:shadow-lg disabled:opacity-70 flex justify-center items-center gap-2"
                         >
