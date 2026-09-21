@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Phone, Mail, MapPin, Send, Car, User, ArrowRight, ArrowLeft, CheckCircle2, Shield, Video, HelpCircle, Navigation, Tag } from 'lucide-react';
 
 const PRODUCT_LABELS: Record<string, string> = {
@@ -25,7 +26,9 @@ const PLAN_TO_PRODUCT: Record<string, string> = {
   'vision-pro': 'dashcam',
 };
 
-export default function ContactForm() {
+function ContactFormInner() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -42,11 +45,10 @@ export default function ContactForm() {
     message: '',
   });
 
-  // Read URL params on mount and pre-select product/plan
+  // Read URL params and pre-select product/plan dynamically
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const productParam = params.get('product');
-    const planParam = params.get('plan');
+    const productParam = searchParams.get('product');
+    const planParam = searchParams.get('plan');
 
     if (productParam || planParam) {
       const resolvedProduct = planParam
@@ -61,7 +63,7 @@ export default function ContactForm() {
       // Skip step 1 since the product is already known
       setStep(2);
     }
-  }, []);
+  }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -103,7 +105,7 @@ export default function ContactForm() {
     setStep(1);
     setFormData({ product: '', plan: '', make: '', model: '', year: '', name: '', phone: '', email: '', message: '' });
     // Clear query params from URL
-    window.history.replaceState({}, '', window.location.pathname + '#contact');
+    router.replace(window.location.pathname + '#contact', { scroll: false });
   };
 
   const selectedLabel = formData.plan ? PRODUCT_LABELS[formData.plan] : formData.product ? PRODUCT_LABELS[formData.product] : null;
@@ -424,5 +426,13 @@ export default function ContactForm() {
         </div>
       </div>
     </section>
+  );
+}
+
+export default function ContactForm() {
+  return (
+    <Suspense fallback={<div className="py-24 bg-gray-50 flex justify-center items-center h-[600px] text-gray-500 font-semibold">Loading form...</div>}>
+      <ContactFormInner />
+    </Suspense>
   );
 }
