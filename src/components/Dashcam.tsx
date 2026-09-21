@@ -84,7 +84,7 @@ export default function Dashcam() {
               Matrix Vision puts road-facing ADAS and in-cab AI cameras in your vehicles. Collision and distraction alerts, live streaming, and privacy controls, all managed from one platform.
             </p>
             <Link
-              href="#contact"
+              href="/?product=dashcam#contact"
               className="inline-block bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-4 rounded-md font-bold text-lg transition-colors shadow-lg"
             >
               Get a Dashcam Quote
@@ -150,7 +150,7 @@ export default function Dashcam() {
                 ))}
               </ul>
               <Link
-                href={`#contact?plan=${plan.planParam}`}
+                href={`/?plan=${plan.planParam}#contact`}
                 className={`block text-center font-bold py-3 rounded-xl transition-all ${
                   plan.highlight
                     ? 'bg-brand-orange hover:bg-brand-orange-hover text-white shadow-lg'

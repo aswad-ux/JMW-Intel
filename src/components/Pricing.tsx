@@ -110,7 +110,7 @@ export default function Pricing() {
               </ul>
 
               <Link
-                href={`#contact?plan=${plan.planParam}`}
+                href={`/?plan=${plan.planParam}#contact`}
                 className={`w-full text-center py-3 rounded-lg font-bold transition-colors ${plan.popular ? 'bg-brand-orange hover:bg-brand-orange-hover text-white' : 'bg-gray-100 hover:bg-gray-200 text-brand-navy'}`}
               >
                 Select Plan

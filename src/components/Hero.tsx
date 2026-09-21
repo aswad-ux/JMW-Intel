@@ -27,13 +27,13 @@ export default function Hero() {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Link 
-              href="#pricing" 
+              href="/#pricing" 
               className="bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-4 rounded-md font-bold text-lg transition-all shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] flex items-center justify-center gap-2"
             >
               View Plans <ArrowRight className="w-5 h-5" />
             </Link>
             <Link 
-              href="#contact" 
+              href="/#contact" 
               className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-md font-bold text-lg transition-all flex items-center justify-center"
             >
               Contact Us

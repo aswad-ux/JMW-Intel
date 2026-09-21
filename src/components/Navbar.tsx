@@ -12,13 +12,13 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex space-x-8 items-center">
-            <Link href="#tracking" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Tracking Solutions</Link>
-            <Link href="#dashcams" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Dashcams</Link>
+            <Link href="/#tracking" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Tracking Solutions</Link>
+            <Link href="/#dashcams" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Dashcams</Link>
             <Link href="/fleet" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Fleet</Link>
-            <Link href="#pricing" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Pricing</Link>
-            <Link href="#contact" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Contact</Link>
+            <Link href="/#pricing" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Pricing</Link>
+            <Link href="/#contact" className="text-gray-600 hover:text-brand-orange transition-colors font-medium">Contact</Link>
             <Link 
-              href="#contact" 
+              href="/#contact" 
               className="bg-brand-orange hover:bg-brand-orange-hover text-white px-6 py-2.5 rounded-md font-semibold transition-colors shadow-md hover:shadow-lg"
             >
               Request a Quote
