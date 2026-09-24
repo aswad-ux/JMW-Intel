@@ -1,5 +1,6 @@
 import { Camera, User, EyeOff, ShieldAlert, Radio, BarChart2, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Dashcam() {
   const features = [
@@ -93,9 +94,11 @@ export default function Dashcam() {
 
           <div className="lg:w-1/2 w-full relative">
             <div className="absolute -inset-4 bg-brand-orange/20 blur-2xl rounded-full"></div>
-            <img
+            <Image
               src="/dashcam.svg"
               alt="Matrix Vision AI Dashcam"
+              width={600}
+              height={400}
               className="relative w-full h-auto drop-shadow-2xl rounded-2xl border border-white/10"
             />
           </div>

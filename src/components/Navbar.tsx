@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
   return (
@@ -7,7 +8,7 @@ export default function Navbar() {
         <div className="flex justify-between h-20 items-center">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
-              <img src="/logo.svg" alt="JMW Intelligent Solutions" className="h-10 w-auto max-w-[200px]" />
+              <Image src="/logo.svg" alt="JMW Intelligent Solutions" width={200} height={40} className="h-10 w-auto max-w-[200px]" priority />
             </Link>
           </div>
           

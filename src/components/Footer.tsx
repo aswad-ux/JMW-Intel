@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,7 +9,7 @@ export default function Footer() {
           
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="inline-block mb-6 bg-white p-2 rounded">
-              <img src="/logo.svg" alt="JMW Intelligent Solutions" className="h-12 w-auto" />
+              <Image src="/logo.svg" alt="JMW Intelligent Solutions" width={150} height={48} className="h-12 w-auto" />
             </Link>
             <p className="text-gray-400 mb-6 max-w-xs">
               Professional, insurance-approved vehicle tracking and dashcam installations across South Africa.
@@ -19,11 +20,11 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><Link href="#tracking" className="hover:text-brand-orange transition-colors">Tracking Solutions</Link></li>
-              <li><Link href="#dashcams" className="hover:text-brand-orange transition-colors">Matrix Vision Dashcams</Link></li>
+              <li><Link href="/#tracking" className="hover:text-brand-orange transition-colors">Tracking Solutions</Link></li>
+              <li><Link href="/#dashcams" className="hover:text-brand-orange transition-colors">Matrix Vision Dashcams</Link></li>
               <li><Link href="/fleet" className="hover:text-brand-orange transition-colors">Fleet Management</Link></li>
-              <li><Link href="#pricing" className="hover:text-brand-orange transition-colors">Pricing Plans</Link></li>
-              <li><Link href="#why-us" className="hover:text-brand-orange transition-colors">Why Choose Us</Link></li>
+              <li><Link href="/#pricing" className="hover:text-brand-orange transition-colors">Pricing Plans</Link></li>
+              <li><Link href="/#why-us" className="hover:text-brand-orange transition-colors">Why Choose Us</Link></li>
             </ul>
           </div>
           

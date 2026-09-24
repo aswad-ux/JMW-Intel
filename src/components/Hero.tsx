@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
@@ -43,10 +44,13 @@ export default function Hero() {
         
         <div className="lg:w-1/2 mt-16 lg:mt-0 relative hidden md:block">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-            <img 
+            <Image 
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" 
               alt="Dashboard display of a modern car" 
+              width={1035}
+              height={690}
               className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent"></div>
           </div>

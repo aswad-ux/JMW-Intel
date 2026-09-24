@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://jmwintel.com' // Replace with actual domain when live
+  const baseUrl = 'https://jmwintel.co.za' 
  
   return [
     {
@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/fleet`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/installation-guide`,
